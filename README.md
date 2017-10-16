@@ -1,7 +1,7 @@
 # The Empire's Greatest Threat: Medical Appointment No Shows
 
 ## Business Applications
-The Empire is facing a serious problem with Stormtroopers & Officers not turning up for scheduled medical appointments. This take up resources in the form of time wasted by losing a slot that a different Stromtroopere could have taken by not turning up. We have been tasked to come up with a logistic regression model that can be used to predict whether a person will make their appointment that is more accurate than the Force. Failure to do so will encur the wrath of the Emperor.
+The Empire is facing a serious problem with Stormtroopers & Officers not turning up for scheduled medical appointments. On top of wasting time and resources, this hinders other Stormtroopers from being able to schedule needed appointments at the same time.  We have been tasked to come up with a logistic regression model that can be used to predict whether a person will make their appointment and is more accurate than the Force. Failure to do so will incur the wrath of the Emperor.
 
 ## Research Questions
 * Number of appointments per day
@@ -14,7 +14,7 @@ The Empire is facing a serious problem with Stormtroopers & Officers not turning
 * Investigate if Region can be a factor for not showing up (policies in area)
 
 Section 1: Reading in the Data
-In this section we will be reading in the data and setting up our table for futher analysis. such as fixing column names and ensuring our data is of the correct type. All this data was received directly from the Kaggle archives on the planet Eadu. The data set contains 15 variables and over 100K rows. This data was transmitted to our ship's computers and will be uploaded here for reproducability, using the following code:
+In this section we will be reading in the data and setting up our table for futher analysis, including fixing column names and ensuring our data is of the correct data type. The medical appointment data was received directly from the Kaggle archives on the planet of Eadu. The data set contains 15 variables and over 100K rows. This data was transmitted to our ship's computers and will be uploaded here for reproducability, using the following code:
 
 ~~~~{.python}
 import numpy as np
@@ -51,7 +51,7 @@ This produced the following table. Rather than print 100K rows, we printed the t
 | 5.639473e+13 | 5638447        | F      | 2016-04-29 08:02:16 | 2016-04-29      | 21  | ANDORINHAS        | 0           | 0            | 0        | 0          | 0        | 0            | No      |
 | 7.812456e+13 | 5629123        | F      | 2016-04-27 12:48:25 | 2016-04-29      | 19  | CONQUISTA         | 0           | 0            | 0        | 0          | 0        | 0            | No      |
 
- As we can see, we have the necessary fields to conduct some analysis on medical appointment no-shows. To begin with we will compare the number of people turning up vs the number of people not turning up for the medical appointments.
+ As we can see, we have the necessary fields to conduct some analysis on medical appointment no-shows. To begin, we will compare the number of people turning up vs the number of people not turning up for the medical appointments.
  
 ![Shows vs No shows](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/Medical%20Appointments/Graphs/No_of_app_over_time.png "Shows vs No-shows")
 
@@ -60,7 +60,7 @@ This produced the following table. Rather than print 100K rows, we printed the t
 ![No Show Appointments vs Time](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/Medical%20Appointments/Graphs/No-Show_Appointments_vs_Time.png "No show Appointments")
  
 As we can see, the vast majority of people make their medical appointments. Notice for the most part, the number of appointments on a given day stays the same except for the **14th May, 2016**. After a brief investigation, it was discovered that this day is in fact Saturday. There was an increase in Chemo-therapy appointments at this time which might explain the number why doctors were taking appointments on this Saturday. 
-As we cans see in the second diagram, around 8am is the most popular time to book a Doctors appointment. This is probabaly due to people waking and feeling ill. Additionally, we see another rise in the early afternoon. This could be due to people deteriorating over the course of a given day.
+Moving to the second diagram, we can see that around 8am is the most popular time to book a Doctors appointment. This is probabaly due to people waking and feeling ill. Additionally, we see another rise in the early afternoon. This could be due to people deteriorating over the course of a given day. These spikes also correspond with the times the medical offices open - the initial open in the morning, and then the re-open following the lunch hour.
 Finally, we can see the times appointments were made, and then the patient did not turn up. As expected it shares a similar shape to our second graph. A logical reason for this shape is that patients awoke feeling ill, but as time progressed, they began to improve before deciding not to attend their appointment.
 
 The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/Medical%20Appointments/Generate_Time_Graphs.ipynb). 
@@ -112,29 +112,29 @@ This returned an average of 79%, further allowing us to conclude our model's pre
 
 We also wanted to see if there was any trend in medical appointment no-shows for men vs. women. In order to look at this, we build a line graph displaying the number of show vs. no-show appointments for each gender:
 
-![Male vs Female Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/tree/master/Graphs/Male_vs_Female_Shows_vs_No-shows.png "Male vs Female Shows vs No-shows")
+![Male vs Female Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Male_vs_Female_Shows_vs_No-shows.png "Male vs Female Shows vs No-shows")
 
 While women clearly make more medical appointments than men, both are more likely to show than not. Additionally, it seems that the number of appointments for men vs. women tends to follow the same general pattern.
 
 Our next task was to look some views of medical apointments by neighbourhood. We first started by plotting the count of appointments by neighbourhood in a bar chart:
 
-![Neighbourhood Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/tree/master/Graphs/Neighbourhood_Appt_Frequency.png "Neighbourhood Appt Frequency")
+![Neighbourhood Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Neighbourhood_Appt_Frequency.png "Neighbourhood Appt Frequency")
 
 Given the large number of neighbourhoods and variation of min and max appointments, we decided to only display the neighbourhoods with more than 2000 appointments in the total timeframe, displayed below:
 
-![Top Neighbourhoods by Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/tree/master/Graphs/Top_Neighbourhoods_by_Appt_Frequency.png "Top Neighbourhoods by Appt Frequency")
+![Top Neighbourhoods by Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Top_Neighbourhoods_by_Appt_Frequency.png "Top Neighbourhoods by Appt Frequency")
 
 Limitting to the top neighbourhoods by number of appointments allowed for a much better visual. While the majority of the top neighbourhoods by number of appointments hover around 2-3k appointments, there are several neighbourhoods that seem to have abnormally high appointments in the timeframe. Jardim Camburi has more than double the number of appointments than the majority of other neighbourhoods.
 
 Given the fact that Jardim Camburi is the neighbourhood with the most medical appointments, what is the show vs. no-show trend? Is the trend within the neighbourhood any different than the average trend?
 
-![Jardim Camburi Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/tree/master/Graphs/Jardim_Camburi.png "Jardim Camburi Shows vs No-shows")
+![Jardim Camburi Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Jardim_Camburi.png "Jardim Camburi Shows vs No-shows")
 
 Medical appointments in Jardim Camburi drop off towards the 3rd week of May, and then spike toward the beginning of June. It also seems that the number of no-shows in this neighbourhood tends to stabalize around the 22nd of may through the end of the time frame.
 
 Now that we understand how medical appointments vary in terms of gender and neighbourhood, let's look for any trends by medical condition.
 
-![Shows vs No-shows by Condition](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/tree/master/Graphs/Shows_vs_No-shows_by_Condition.png "Shows vs No-shows by Condition")
+![Shows vs No-shows by Condition](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Shows_vs_No-shows_by_Condition.png "Shows vs No-shows by Condition")
 
 The highest appointment frequency by medical condition is hypertension, followed by diabetes. The rate of hypertension in this area seems to be very high. Individuals with alcoholism and/or are disabled are much less likely to schedule medical appointments.
 
