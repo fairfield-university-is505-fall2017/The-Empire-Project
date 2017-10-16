@@ -139,5 +139,5 @@ Now that we understand how medical appointments vary in terms of gender and neig
 The highest appointment frequency by medical condition is hypertension, followed by diabetes. The rate of hypertension in this area seems to be very high. Individuals with alcoholism and/or are disabled are much less likely to schedule medical appointments.
 
 
-The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/The-Empire-Project/MedicalAppts_DE.ipynb). 
+The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/MedicalAppts_DE.ipynb). 
 
