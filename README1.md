@@ -66,6 +66,42 @@ Finally, we can see the times appointments were made, and then the patient did n
 The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/Medical%20Appointments/Generate_Time_Graphs.ipynb). 
 
 
+We also wanted to see if there was any trend in medical appointment no-shows for men vs. women. In order to look at this, we build a line graph displaying the number of show vs. no-show appointments for each gender:
+
+![Male vs Female Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Male_vs_Female_Shows_vs_No-shows.png "Male vs Female Shows vs No-shows")
+
+While women clearly make more medical appointments than men, both are more likely to show than not. Additionally, it seems that the number of appointments for men vs. women tends to follow the same general pattern.
+
+
+## Neighbourhood Analysis
+Our next task was to look some views of medical apointments by neighbourhood. We first started by plotting the count of appointments by neighbourhood in a bar chart:
+
+![Neighbourhood Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Neighbourhood_Appt_Frequency.png "Neighbourhood Appt Frequency")
+
+Given the large number of neighbourhoods and variation of min and max appointments, we decided to only display the neighbourhoods with more than 2000 appointments in the total timeframe, displayed below:
+
+![Top Neighbourhoods by Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Top_Neighbourhoods_by_Appt_Frequency.png "Top Neighbourhoods by Appt Frequency")
+
+Limitting to the top neighbourhoods by number of appointments allowed for a much better visual. While the majority of the top neighbourhoods by number of appointments hover around 2-3k appointments, there are several neighbourhoods that seem to have abnormally high appointments in the timeframe. Jardim Camburi has more than double the number of appointments than the majority of other neighbourhoods.
+
+Given the fact that Jardim Camburi is the neighbourhood with the most medical appointments, what is the show vs. no-show trend? Is the trend within the neighbourhood any different than the average trend?
+
+![Jardim Camburi Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Jardim_Camburi.png "Jardim Camburi Shows vs No-shows")
+
+Medical appointments in Jardim Camburi drop off towards the 3rd week of May, and then spike toward the beginning of June. It also seems that the number of no-shows in this neighbourhood tends to stabalize around the 22nd of may through the end of the time frame.
+
+Now that we understand how medical appointments vary in terms of gender and neighbourhood, let's look for any trends by medical condition.
+
+![Shows vs No-shows by Condition](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Shows_vs_No-shows_by_Condition.png "Shows vs No-shows by Condition")
+
+The highest appointment frequency by medical condition is hypertension, followed by diabetes. The rate of hypertension in this area seems to be very high. Individuals with alcoholism and/or are disabled are much less likely to schedule medical appointments.
+
+
+The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/MedicalAppts_DE.ipynb). 
+
+
+
+
 ## Logistic Regression Model
 A Logistic Regression Model (LR) is a regression model where the dependent variable (DV) is categorical. This report covers the case of a binary dependent variable—that is, where the output can take only two values, "0" and "1", which represent outcomes such as pass/fail, win/lose, alive/dead or in our case, show/no-show. The first thing we need to do is to create a deep copy of our data set as we will be transformations to the data and want to keep the integrity of the original data. The code for this portion of the report is quite extense, you can find a well documented version of it [here](https://github.com/fairfield-university-is505-fall2017/health-stats-part-5-the-empire/blob/master/Medical%20Appointments/Logistic%20Regression%20.ipynb). 
 
@@ -110,34 +146,5 @@ print (scores.mean())
 
 This returned an average of 79%, further allowing us to conclude our model's predictive power is 79%. Examining the Null error, we observed it to be around 20%.   
 
-We also wanted to see if there was any trend in medical appointment no-shows for men vs. women. In order to look at this, we build a line graph displaying the number of show vs. no-show appointments for each gender:
 
-![Male vs Female Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Male_vs_Female_Shows_vs_No-shows.png "Male vs Female Shows vs No-shows")
-
-While women clearly make more medical appointments than men, both are more likely to show than not. Additionally, it seems that the number of appointments for men vs. women tends to follow the same general pattern.
-
-Our next task was to look some views of medical apointments by neighbourhood. We first started by plotting the count of appointments by neighbourhood in a bar chart:
-
-![Neighbourhood Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Neighbourhood_Appt_Frequency.png "Neighbourhood Appt Frequency")
-
-Given the large number of neighbourhoods and variation of min and max appointments, we decided to only display the neighbourhoods with more than 2000 appointments in the total timeframe, displayed below:
-
-![Top Neighbourhoods by Appt Frequency](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Top_Neighbourhoods_by_Appt_Frequency.png "Top Neighbourhoods by Appt Frequency")
-
-Limitting to the top neighbourhoods by number of appointments allowed for a much better visual. While the majority of the top neighbourhoods by number of appointments hover around 2-3k appointments, there are several neighbourhoods that seem to have abnormally high appointments in the timeframe. Jardim Camburi has more than double the number of appointments than the majority of other neighbourhoods.
-
-Given the fact that Jardim Camburi is the neighbourhood with the most medical appointments, what is the show vs. no-show trend? Is the trend within the neighbourhood any different than the average trend?
-
-![Jardim Camburi Shows vs No-shows](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Jardim_Camburi.png "Jardim Camburi Shows vs No-shows")
-
-Medical appointments in Jardim Camburi drop off towards the 3rd week of May, and then spike toward the beginning of June. It also seems that the number of no-shows in this neighbourhood tends to stabalize around the 22nd of may through the end of the time frame.
-
-Now that we understand how medical appointments vary in terms of gender and neighbourhood, let's look for any trends by medical condition.
-
-![Shows vs No-shows by Condition](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/Graphs/Shows_vs_No-shows_by_Condition.png "Shows vs No-shows by Condition")
-
-The highest appointment frequency by medical condition is hypertension, followed by diabetes. The rate of hypertension in this area seems to be very high. Individuals with alcoholism and/or are disabled are much less likely to schedule medical appointments.
-
-
-The code for all of the previous graphs can be found [here](https://github.com/fairfield-university-is505-fall2017/The-Empire-Project/blob/master/MedicalAppts_DE.ipynb). 
 
